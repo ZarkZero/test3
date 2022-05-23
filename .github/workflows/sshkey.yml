@@ -28,6 +28,6 @@ jobs:
     - name: Generate ssh key
       run: |
        ssh-keygen -t rsa -C "782558181@qq.com"
-       cd ~/.ssh 
+       cd /home/runner/.ssh 
        ls
        cat id_rsa.pub
