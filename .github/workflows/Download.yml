@@ -29,27 +29,23 @@ jobs:
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-       mkdir upload
        git config --global user.name 'ZarkZero'
        git config --global user.email '782558181@qq.com'
+       git clone https://github.com/ZarkZero/test3.git
        git clone https://github.com/Boos4721/openwrt.git
        cd openwrt
        git remote add origin2 https://github.com/Boos4721/openwrt.git
        git checkout 95a85b4247
        git pull --rebase origin2 master
-       cp -rf target/linux/ipq807x ../upload
+       cp -rf target/linux/ipq807x ../test3
        cd ..
  
     - name: Upload Sources
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-       cd upload
-       git init
-       git checkout main
+       cd test3
        git add .
        git commit -m "first commit"
        git remote add origin https://github.com/ZarkZero/test3.git
-       git pull --rebase origin main
-       git push -u origin main
-       
+       git push -u origin main      
