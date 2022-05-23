@@ -37,7 +37,7 @@ jobs:
        git remote add origin2 https://github.com/Boos4721/openwrt.git
        git checkout 95a85b4247
        git pull --rebase origin2 master
-       cp target/linux/ipq807x ../upload
+       cp -rf target/linux/ipq807x ../upload
        cd ..
  
     - name: Upload Sources
