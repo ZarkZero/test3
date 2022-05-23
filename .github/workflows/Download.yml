@@ -47,4 +47,5 @@ jobs:
        cd test3
        git add .
        git commit -m "first commit"
-       git push -u origin main      
+       git remote add origin2 https://ZarkZero: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@github.com/ZarkZero/test3
+       git push -u origin2 main      
