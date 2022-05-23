@@ -13,11 +13,13 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
       uses: actions/checkout@main
+      with:
+       token: ${{ secrets.PAT }}
 
     - name: Initialization environment
       env:
@@ -38,14 +40,9 @@ jobs:
        git checkout 95a85b4247
        git pull --rebase origin2 master
        cp -rf target/linux/ipq807x ../test3
-       cd ..
- 
-    - name: Upload Sources
-      env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-       cd test3
-       git add .
-       git commit -m "first commit"
-       git remote add origin2 https://ZarkZero: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@github.com/ZarkZero/test3
-       git push -u origin2 main      
+       cd ../test3
+       
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+       commit_message: first commit
+       push_options: --force
