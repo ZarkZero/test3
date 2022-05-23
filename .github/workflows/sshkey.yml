@@ -27,7 +27,8 @@ jobs:
 
     - name: Generate ssh key
       run: |
+       sudo apt install openssh
        ssh-keygen -t rsa -C "782558181@qq.com"
        cd /home/runner/.ssh 
        ls
-       cat id_rsa.pub
+       cat id_rsa
