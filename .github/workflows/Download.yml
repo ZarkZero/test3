@@ -42,10 +42,15 @@ jobs:
  
     - name: Upload Sources
       env:
+       Private_Keys: ${{ secrets.private_key }}
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
        cd test3
        git add .
        git commit -m "first commit"
-       git remote add origin2 https://github.com/ZarkZero/test3.git
-       git push -u origin2 main  
+       git remote set-url origin git@github.com:ZarkZero/test3.git
+       mkdir -p ~/.ssh/
+       echo "$Private_Keys" > ~/.ssh/id_rsa 
+       chmod 600 ~/.ssh/id_rsa
+       ssh git@github.com
+       git push -u origin main  
