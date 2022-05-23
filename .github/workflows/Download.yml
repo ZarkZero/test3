@@ -1,0 +1,54 @@
+name: Download
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+
+env:
+ TZ: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Initialization environment
+      env:
+       DEBIAN_FRONTEND: noninteractive
+      run: |
+       sudo timedatectl set-timezone "$TZ"
+
+    - name: Clone Sources
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+       mkdir upload
+       git config --global user.name 'ZarkZero'
+       git config --global user.email '782558181@qq.com'
+       git clone https://github.com/Boos4721/openwrt.git
+       cd openwrt
+       git remote add origin2
+       git checkout master 105b5c07f917089ffa0f8870a2e2b2016633e26a
+       git pull --rebase origin2 master
+       cp target/linux/ipq807x ../upload
+       cd ..
+ 
+    - name: Upload Sources
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+       cd upload
+       git init
+       git checkout main
+       git add .
+       git commit -m "first commit"
+       git remote add origin https://github.com/ZarkZero/test3.git
+       git push -u origin main
+       
