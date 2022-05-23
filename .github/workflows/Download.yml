@@ -25,13 +25,12 @@ jobs:
       run: |
        sudo timedatectl set-timezone "$TZ"
 
-
     - name: Clone Sources
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-       git config --global user.name 'ZarkZero'
-       git config --global user.email '782558181@qq.com'
+       git config --global user.name 'github-actions[bot]'
+       git config --global user.email 'github-actions[bot]@users.noreply.github.com'
        git clone https://github.com/ZarkZero/test3.git
        git clone https://github.com/Boos4721/openwrt.git
        cd openwrt
@@ -39,10 +38,13 @@ jobs:
        git checkout 95a85b4247
        git pull --rebase origin2 master
        cp -rf target/linux/ipq807x ../test3
-       cd ../test3
+       cd ..
+ 
+    - name: Upload Sources
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+       cd test3
        git add .
-       
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-       commit_message: first commit
-       push_options: --force
+       git commit -m "first commit"
+       git push -u origin main  
