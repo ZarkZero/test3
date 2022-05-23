@@ -33,6 +33,7 @@ jobs:
       run: |
        git config --global user.name 'ZarkZero'
        git config --global user.email '782558181@qq.com'
+       git config global --add url."git@github.com:".insteadOf "https://github.com/"
        git clone https://github.com/ZarkZero/test3.git
        git clone https://github.com/Boos4721/openwrt.git
        cd openwrt
@@ -42,7 +43,12 @@ jobs:
        cp -rf target/linux/ipq807x ../test3
        cd ../test3
        
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-       commit_message: first commit
-       push_options: --force
+    - name: Upload Sources
+      env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+       cd test3
+       git add .
+       git commit -m "first commit"
+       git remote add origin2 https://ZarkZero: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@github.com/ZarkZero/test3
+       git push -u origin2 main
