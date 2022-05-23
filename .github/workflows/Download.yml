@@ -34,7 +34,7 @@ jobs:
        git config --global user.email '782558181@qq.com'
        git clone https://github.com/Boos4721/openwrt.git
        cd openwrt
-       git remote add origin2
+       git remote add origin2 https://github.com/Boos4721/openwrt.git
        git checkout master 105b5c07f917089ffa0f8870a2e2b2016633e26a
        git pull --rebase origin2 master
        cp target/linux/ipq807x ../upload
