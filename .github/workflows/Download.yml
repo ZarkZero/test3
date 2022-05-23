@@ -40,6 +40,7 @@ jobs:
        git pull --rebase origin2 master
        cp -rf target/linux/ipq807x ../test3
        cd ../test3
+       git add .
        
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
