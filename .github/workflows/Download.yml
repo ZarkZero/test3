@@ -53,4 +53,4 @@ jobs:
        echo "$Private_Keys" > ~/.ssh/id_rsa 
        chmod 600 ~/.ssh/id_rsa
        ssh git@github.com
-       git push -u origin main  
+       git push -u -f origin main  
