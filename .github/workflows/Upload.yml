@@ -33,10 +33,14 @@ jobs:
 
     - name: Pull Source
       run: |
+       ls
+       cd openwrt
        git pull --rebase origin master
 
     - name: Copy Source
       run: |
+       ls
+       cd openwrt
        cp -rf target/linux/ipq807x ..
 
     - name: Upload Directory
