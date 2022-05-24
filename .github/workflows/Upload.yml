@@ -30,12 +30,13 @@ jobs:
        git clone https://github.com/Boos4721/openwrt.git
        cd openwrt
        git checkout 105b5c07f9
+       git reset --hard 105b5c07f917089ffa0f8870a2e2b2016633e26a
 
     - name: Pull Source
       run: |
        ls
        cd openwrt
-       git pull --rebase origin master
+       git pull --rebase origin 105b5c07f9
 
     - name: Copy Source
       run: |
