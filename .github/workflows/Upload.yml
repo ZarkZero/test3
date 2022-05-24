@@ -30,7 +30,7 @@ jobs:
        git clone https://github.com/Boos4721/openwrt.git
        cd openwrt
        git checkout a3f1e837fd
-       cp -rf target/linux/ipq807x .
+       cp -rf target/linux/ipq807x ..
 
     - name: Upload Directory
       uses: actions/upload-artifact@main
