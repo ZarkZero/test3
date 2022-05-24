@@ -27,9 +27,8 @@ jobs:
 
     - name: Clone Source
       run: |
-       mkdir upload
-       ls
        pwd
+       ls
        git clone https://github.com/Boos4721/openwrt.git
        cd openwrt
        git checkout 95a85b4247
@@ -40,4 +39,4 @@ jobs:
       uses: actions/upload-artifact@main
       with:
         name: qsdk-ax6
-        path: /home/runner/work/test3/upload/ipq807x
+        path: /home/runner/work/test3/test3/ipq807x
