@@ -29,14 +29,8 @@ jobs:
       run: |
        git clone https://github.com/Boos4721/openwrt.git
        cd openwrt
-       git checkout 105b5c07f9
-       git reset --hard 105b5c07f917089ffa0f8870a2e2b2016633e26a
-
-    - name: Copy Source
-      run: |
-       ls
-       cd openwrt
-       cp -rf target/linux/ipq807x ..
+       git checkout a3f1e837fd
+       cp -rf target/linux/ipq807x .
 
     - name: Upload Directory
       uses: actions/upload-artifact@main
