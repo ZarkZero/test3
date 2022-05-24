@@ -31,12 +31,12 @@ jobs:
        ls
        git clone https://github.com/Boos4721/openwrt.git
        cd openwrt
-       git checkout 95a85b4247
+       git checkout 105b5c07f9
        git pull --rebase origin master
        cp -rf target/linux/ipq807x ..
 
     - name: Upload Directory
       uses: actions/upload-artifact@main
       with:
-        name: qsdk-ax6
+        name: ipq807x
         path: /home/runner/work/test3/test3/ipq807x
