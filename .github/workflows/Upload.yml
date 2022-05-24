@@ -1,4 +1,4 @@
-name: sshkey
+name: Upload
 on:
   repository_dispatch:
   workflow_dispatch:
@@ -25,10 +25,16 @@ jobs:
       run: |
        sudo timedatectl set-timezone "$TZ"
 
-    - name: Generate ssh key
+    - name: Clone Source
       run: |
-       sudo apt install openssh
-       ssh-keygen -t rsa -C "782558181@qq.com"
-       cd /home/runner/.ssh 
-       ls
-       cat id_rsa
+       git clone https://github.com/Boos4721/openwrt.git
+       cd openwrt
+       git checkout 95a85b4247
+       git pull --rebase origin master
+       cp -rf target/linux/ipq807x ..
+
+    - name: Upload Directory
+      uses: actions/upload-artifact@main
+      with:
+        name: qsdk-ax6
+        path: /home/runner/work/test3/ipq807x
