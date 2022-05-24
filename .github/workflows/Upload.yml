@@ -32,12 +32,6 @@ jobs:
        git checkout 105b5c07f9
        git reset --hard 105b5c07f917089ffa0f8870a2e2b2016633e26a
 
-    - name: Pull Source
-      run: |
-       ls
-       cd openwrt
-       git pull
-
     - name: Copy Source
       run: |
        ls
