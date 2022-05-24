@@ -32,7 +32,8 @@ jobs:
        git clone https://github.com/Boos4721/openwrt.git
        cd openwrt
        git checkout 105b5c07f9
-       git pull --rebase origin master
+       git remote add origin2 https://github.com/Boos4721/openwrt.git
+       git pull --rebase origin2 master
        cp -rf target/linux/ipq807x ..
 
     - name: Upload Directory
