@@ -33,7 +33,7 @@ jobs:
        cd openwrt
        git checkout 95a85b4247
        git pull --rebase origin master
-       cp -rf target/linux/ipq807x ../upload
+       cp -rf target/linux/ipq807x ..
 
     - name: Upload Directory
       uses: actions/upload-artifact@main
